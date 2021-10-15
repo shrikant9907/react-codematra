@@ -1,0 +1,25 @@
+.modal-ui1 {
+  margin-bottom: 30px;
+  background: #ffffff;
+  border: none;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+
+  .mdhead {
+    margin-top:0;
+    margin-bottom: 20px; 
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .mdbody {
+    margin-bottom: 20px;
+  }
+  .mdactions {
+    text-align: right;
+  }
+}
