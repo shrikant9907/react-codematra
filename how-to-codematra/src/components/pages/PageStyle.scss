@@ -1,0 +1,28 @@
+.navui1 {
+  background-color: #ffffff;
+  ul {
+    padding:0;
+    margin: 0;
+    display:flex;
+    justify-content: center;
+    li {
+      list-style: none;
+      a {
+        text-decoration: none;
+        padding: 10px 15px;
+        display: inline-block;
+        background-color: #eee4e4;
+        color: #000000;
+        &:hover {
+          background-color: #117CA6;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+.pagewr {
+  padding: 20px 15px;
+  text-align: center;
+}
