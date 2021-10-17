@@ -13,8 +13,7 @@ function ReactDatePicker() {
       <DatePicker 
         className="input-ui" 
         selected={startDate} 
-        onChange={(date) => 
-        setStartDate(date)} 
+        onChange={(date) => setStartDate(date)} 
         dateFormat="dd/MM/yyyy"
       />
     </>
