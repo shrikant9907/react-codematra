@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import HomePage from "./components/pages/HomePage";
+import Posts from './components/pages/Blog/Posts';
 import ReactDatePicker from "./components/pages/ReactDatePicker";
 import DatetimePickerPage from './components/pages/DatetimePickerPage';
 import LoginModal from './components/login-modal/LoginModal';
@@ -21,9 +22,10 @@ function App() {
       <nav className="navui1">
         <ul>
           <li><Link to='/'>Home</Link></li>
+          <li><Link to='/blog'>Blog</Link></li>
           <li><Link to='/datepicker'>React Datepicker</Link></li>
           <li><Link to='/datetimepicker'>React Date Time Picker</Link></li>
-          <li><button class="btnui" onClick={handleShowLoginModal}>Login</button></li>
+          <li><button className="btnui" onClick={handleShowLoginModal}>Login</button></li>
         </ul>
       </nav>
 
@@ -33,6 +35,7 @@ function App() {
       <div className="pagewr">
         <Switch>
           <Route exact path="/" component={HomePage} />
+          <Route path="/blog" component={Posts}/>
           <Route path="/datepicker" component={ReactDatePicker}/>
           <Route path="/datetimepicker" component={DatetimePickerPage}/>
         </Switch>

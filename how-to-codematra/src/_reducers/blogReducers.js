@@ -1,12 +1,18 @@
 import * as actionType from "../_actionTypes";
 
-export const blogReducer = (state = [], action) => {
+const initialState = {
+  isLoading: true,
+  posts: []
+}
+
+export const blogReducer = (state = initialState, action) => {
+
   switch(action.type) {
 
     case actionType.ADD_POST:
       return { 
         ...state, 
-        blogPosts: action.payload 
+        posts: action.payload 
       };
 
     case actionType.EDIT_POST:
@@ -15,13 +21,14 @@ export const blogReducer = (state = [], action) => {
     case actionType.DELETE_POST:
       return state.filter(post => post.id !== action.id);
 
-    case actionType.GET_POST:
+    case actionType.SET_POST:
       return {
         ...state, 
-        blogPosts: action.payload 
+        posts: action.payload 
       };
 
     default:
       return state;
   }
+
 }

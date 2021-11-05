@@ -31,9 +31,10 @@ export const delete_post = (postId) => {
   }
 }
 
-// Get Post Action - Using Array Function
-export const get_post = () => {
+// SET Post Action - Using Array Function
+export const set_post = (data) => {
   return {
-    type: actionTypes.GET_POST,
+    type: actionTypes.SET_POST,
+    payload: data
   }
 }
