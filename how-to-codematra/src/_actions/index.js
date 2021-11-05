@@ -4,9 +4,7 @@ import * as actionTypes from "../_actionTypes";
 export const add_post = (data) => {
   return {
     type: actionTypes.ADD_POST,
-    payload: {
-      postData: data
-    }
+    payload: data
   }
 }
 
@@ -15,19 +13,17 @@ export const edit_post = (postId, data) => {
   return {
     type: actionTypes.EDIT_POST,
     payload: {
-      postId: postId,
-      postData: data
+      id: postId,
+      post: data
     }
   }
 }
 
 // Delete Post Action - Using Array Function
-export const delete_post = (postId) => {
+export const delete_post = (postid) => {
   return {
     type: actionTypes.DELETE_POST,
-    payload: {
-      postId: postId
-    }
+    payload: postid
   }
 }
 
