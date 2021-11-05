@@ -1,10 +1,8 @@
-// How to Use: 
-
 // import  ApiServices  from  './ApiServices';
 // const  Api  =  new  ApiServices();
   
 import axios from 'axios';
-const API_URL = 'https://newsapi.org/v2/top-headlines?country=in&apiKey=d4ebf18b365d48aa81c663728441697e';
+const API_URL = process.env.REACT_APP_API_URL;
 
 class ApiServices{
  
