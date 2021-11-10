@@ -10,7 +10,7 @@ export class UsersListing extends Component {
     this.state = {
       users: [],
       page: 1,
-      pages: 1
+      pages: 1,
     }
   }
 
@@ -54,10 +54,32 @@ export class UsersListing extends Component {
       page: newpage
     }));
   }
+
+  deleteUser = (e, id) => {
+    e.preventDefault();
+    axios.delete(`https://reqres.in/api/users/${this.state.page}`)
+    .then(res => {
+      if (res && res.status === 204) {
+        alert('1 item deleted');        
+      }
+    })
+    .catch(error => console.log(error))
+  }
+
+  editUser = (e, id, newUser) => {
+    e.preventDefault();
+    axios.put(`https://reqres.in/api/users/${this.state.page}`, newUser)
+    .then(res => {
+      if (res && res.status === 200) {
+        alert(`1 item updated at ${res.data.updatedAt}`);    
+      }
+    })
+    .catch(error => console.log(error))
+  }
   
   render() {
 
-    const { users, pages, page } = this.state;
+    const { users, pages, page, updatedAt } = this.state;
 
     const pageNumbers = [];
     for (let i = 1; i <= pages; i++) {
@@ -71,7 +93,7 @@ export class UsersListing extends Component {
       <div className="users-listing">
         {
           users && users.map((user, i) => {
-            return <UserItem key={ user.id } data={ user } />
+            return <UserItem key={ user.id } data={ user } updatedAt={updatedAt} delete={(e) => this.deleteUser(e, user.id)} edit={(e) => this.editUser(e, user.id)}  />
           })
         }
         <div className="uactions">
