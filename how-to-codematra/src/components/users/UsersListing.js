@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import UserItem from './UserItem';
+import AddEditUser from './AddEditUser';
 import './UsersListing.scss';
 
 export class UsersListing extends Component {
@@ -11,6 +12,7 @@ export class UsersListing extends Component {
       users: [],
       page: 1,
       pages: 1,
+      showAddUserForm: false
     }
   }
 
@@ -76,10 +78,40 @@ export class UsersListing extends Component {
     })
     .catch(error => console.log(error))
   }
+
+  addUser = (e) => {
+    e.preventDefault();
+
+    const data = {
+      name: e.target[0].value,
+      job: e.target[1].value
+    }
+
+    axios.post(`https://reqres.in/api/users/`, data)
+    .then(res => {
+      if (res && res.status === 201) {
+        alert(`New user added.`);    
+      }
+    })
+    .catch(error => console.log(error))
+
+    // Clear input
+    e.target[0].value = '';
+    e.target[1].value = '';
+    
+  }
   
+  showAddUserForm = (e) => {
+    this.setState({
+      showAddUserForm: !this.state.showAddUserForm
+    })
+  }
+
+
+
   render() {
 
-    const { users, pages, page, updatedAt } = this.state;
+    const { users, pages, page, updatedAt, showAddUserForm } = this.state;
 
     const pageNumbers = [];
     for (let i = 1; i <= pages; i++) {
@@ -90,6 +122,12 @@ export class UsersListing extends Component {
     return (
       <>
       <h4>User Listing</h4>
+      <div className="user-actions">
+        <button className="btnui" onClick={ (e) => this.showAddUserForm(e) }>Add New User</button>
+      </div>
+      {
+        showAddUserForm ? <AddEditUser adduser={(e) => this.addUser(e)} type="add" /> : ''
+      }
       <div className="users-listing">
         {
           users && users.map((user, i) => {

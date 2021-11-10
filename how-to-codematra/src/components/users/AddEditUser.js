@@ -1,11 +1,19 @@
 import React from 'react'
 const AddEditUser = (props) => {
-  const { title, url } = props.data;
+
+  const { adduser } = props;
+
+  const handleUserSubmit = (e) => {
+    adduser(e);
+  }
   return (
     <>
-      <div className="useritem">
-        <img src={ url } alt={ title } />
-        <div className="uname">{ title }</div>
+      <div className="add-user-form">
+        <form onSubmit={(e) => handleUserSubmit(e)}>
+           <input placeholder="Enter Name" className="form-control" name="name"  />
+           <input placeholder="Enter Job" className="form-control" name="job"  />
+           <button type="submit" name="adduser">Submit</button>
+        </form>
       </div>
     </>
   )
